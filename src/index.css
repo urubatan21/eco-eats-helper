@@ -2,49 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 120 20% 98%;
-    --foreground: 150 30% 15%;
+    /* ECOBUDDY - Verde e Branco */
+    --background: 120 40% 98%;
+    --foreground: 145 50% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 30% 15%;
+    --card-foreground: 145 50% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 30% 15%;
+    --popover-foreground: 145 50% 12%;
 
-    --primary: 142 60% 42%;
+    /* Verde Principal - Maçã Verde vibrante */
+    --primary: 120 65% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 140 30% 94%;
-    --secondary-foreground: 150 30% 25%;
+    --secondary: 120 35% 94%;
+    --secondary-foreground: 145 50% 20%;
 
-    --muted: 140 20% 95%;
-    --muted-foreground: 150 10% 45%;
+    --muted: 120 20% 95%;
+    --muted-foreground: 145 15% 45%;
 
-    --accent: 38 92% 50%;
+    /* Laranja/Âmbar para alertas */
+    --accent: 38 95% 55%;
     --accent-foreground: 38 90% 15%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --warning: 45 93% 47%;
+    --warning: 45 95% 50%;
     --warning-foreground: 45 90% 15%;
 
-    --success: 142 70% 45%;
+    --success: 120 65% 45%;
     --success-foreground: 0 0% 100%;
 
-    --expired: 0 72% 51%;
-    --expiring: 45 93% 47%;
-    --fresh: 142 60% 42%;
+    /* Status de validade */
+    --expired: 0 75% 55%;
+    --expiring: 45 95% 50%;
+    --fresh: 120 65% 45%;
 
-    --border: 140 20% 88%;
-    --input: 140 20% 88%;
-    --ring: 142 60% 42%;
+    --border: 120 25% 88%;
+    --input: 120 25% 88%;
+    --ring: 120 65% 45%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
+
+    /* Cores adicionais */
+    --eco-light: 120 50% 96%;
+    --eco-glow: 120 65% 55%;
+    
+    /* Gradientes */
+    --gradient-eco: linear-gradient(135deg, hsl(120, 65%, 45%) 0%, hsl(140, 60%, 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(120, 40%, 98%) 100%);
+    
+    /* Sombras */
+    --shadow-eco: 0 4px 20px -4px hsl(120, 65%, 45%, 0.25);
+    --shadow-card: 0 2px 12px -2px hsl(145, 30%, 20%, 0.08);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -57,36 +74,36 @@
   }
 
   .dark {
-    --background: 150 20% 8%;
-    --foreground: 140 20% 95%;
+    --background: 145 30% 8%;
+    --foreground: 120 30% 95%;
 
-    --card: 150 20% 12%;
-    --card-foreground: 140 20% 95%;
+    --card: 145 30% 12%;
+    --card-foreground: 120 30% 95%;
 
-    --popover: 150 20% 12%;
-    --popover-foreground: 140 20% 95%;
+    --popover: 145 30% 12%;
+    --popover-foreground: 120 30% 95%;
 
-    --primary: 142 60% 50%;
-    --primary-foreground: 150 30% 10%;
+    --primary: 120 60% 55%;
+    --primary-foreground: 145 50% 8%;
 
-    --secondary: 150 20% 18%;
-    --secondary-foreground: 140 20% 90%;
+    --secondary: 145 25% 18%;
+    --secondary-foreground: 120 25% 90%;
 
-    --muted: 150 15% 20%;
-    --muted-foreground: 140 10% 60%;
+    --muted: 145 20% 20%;
+    --muted-foreground: 120 15% 60%;
 
     --accent: 38 92% 55%;
     --accent-foreground: 38 90% 10%;
 
-    --destructive: 0 62% 45%;
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 100%;
 
     --warning: 45 93% 50%;
     --warning-foreground: 45 90% 10%;
 
-    --border: 150 15% 20%;
-    --input: 150 15% 20%;
-    --ring: 142 60% 50%;
+    --border: 145 20% 20%;
+    --input: 145 20% 20%;
+    --ring: 120 60% 55%;
   }
 }
 
@@ -99,23 +116,60 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Nunito', sans-serif;
   }
+
+  h1, h2, h3 {
+    font-family: 'Fredoka', 'Nunito', sans-serif;
+  }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-card/80 backdrop-blur-lg;
+    @apply bg-card/90 backdrop-blur-xl;
   }
 
   .status-fresh {
-    @apply bg-success/10 text-success border-success/20;
+    @apply bg-success/15 text-success border-success/30;
   }
 
   .status-expiring {
-    @apply bg-warning/10 text-warning border-warning/20;
+    @apply bg-warning/15 text-warning border-warning/30;
   }
 
   .status-expired {
-    @apply bg-destructive/10 text-destructive border-destructive/20;
+    @apply bg-destructive/15 text-destructive border-destructive/30;
+  }
+
+  .eco-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(140, 60%, 50%) 100%);
+  }
+
+  .eco-glow {
+    box-shadow: 0 0 30px -5px hsl(var(--primary) / 0.4);
+  }
+
+  .card-shadow {
+    box-shadow: 0 2px 12px -2px hsl(145, 30%, 20%, 0.08);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(140, 65%, 40%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .challenge-card {
+    background: linear-gradient(135deg, hsl(45, 95%, 55%, 0.15) 0%, hsl(38, 95%, 55%, 0.05) 100%);
+    border: 2px dashed hsl(var(--accent) / 0.5);
+  }
+
+  .medal-glow {
+    animation: medal-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes medal-pulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.05); filter: brightness(1.2); }
   }
 }
 
@@ -139,4 +193,24 @@
 
 .safe-top {
   padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Animações extras */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
 }
